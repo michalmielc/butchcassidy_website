@@ -1,0 +1,14 @@
+body {
+    background-color: blue;
+   
+}
+
+
+#clock {
+    font-family: "Atomic Age";
+    font-size: 50px;
+    text-align: center;
+    color: white;
+    margin: auto;
+    padding-top: 15%;
+}

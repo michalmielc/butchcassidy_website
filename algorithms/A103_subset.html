@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podzbiory</title>
+</head>
+<body>
+    
+    <p>Algorytm generujący podzbiory ustalonego zbioru { 1,2, ... n }</p>
+
+    <div>        
+    
+    <p>PSEUDOKOD</p>
+
+    PROCEDURE subset(n)
+    PRINT A = { &#8709; }
+      a: = max { 1 <= i <= n, i &notin; A }
+        if a== &#8709; then 
+            RETURN
+
+        else
+            usuwamy z A wszystkie elementy większe od a i dodajemy A
+            PRINT A
+
+    <p>PRZYKŁAD</p>
+
+
+    <input id="number" name="number" type="number" placeholder="wpisz wartość" onclick="clearFields()">
+    <label for="number">Podaj  liczbę elementów</label>
+    <button id="myButton" onclick="createSubsets()">Generuj podzbiory</button>
+
+    <p>Wynik:</p>
+    <p id="result"></p>
+
+    <script src="../javascripts/A103_subset.js"></script>
+</body>
+</html>

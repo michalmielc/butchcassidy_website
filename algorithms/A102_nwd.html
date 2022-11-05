@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWD</title>
+</head>
+<body>
+    
+    <p>Algorytm obliczający NWD (a,b) czyli największy wspólny dzielnik liczb a i b</p>
+
+    <div>        
+    
+    <p>PSEUDOKOD BINARNY NA DZIESIĘTNY</p>
+
+    PROCEDURE NWD(a,b)
+    while (b!=0)
+        c:= a mod b
+        a:=b
+        b:=c
+    RETURN a.   
+
+
+    <p>PRZYKŁAD</p>
+
+
+    <input id="number1" name="number1" type="number" placeholder="wpisz wartość" onclick="clearFields()">
+    <label for="number1">Podaj pierwszą liczbę</label>
+    <input id="number2" name="number2" type="number" placeholder="wpisz wartość" onclick="clearFields()">
+    <label for="number1">Podaj drugą liczbę</label>
+    <button id="myButton" onclick="gcd()">OBLICZ</button>
+
+    <p>Wynik:</p>
+    <p id="result"></p>
+
+    <script src="../javascripts/A102_nwd.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+/*NAGŁÓWEK */
+#nav{
+    padding-top: 15px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:55px; 
+    flex-wrap: wrap;
+}
+
+#nav a {
+    all: unset; 
+    height: 25px;
+    padding: 15px;
+    min-width: 100px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 17px;
+} 
+
+#nav a:hover {
+    background-color: #eb482b; 
+    color: aliceblue;
+}  
+
+#nav:hover {
+    border-bottom: 1px #808000 solid;    
+}
+
+
+/* ############################################################################################ */
+/* STRONA O MNIE/ HOME  ------------------------------------------------------------------------*/
+body#home {
+    background-color:#404040;
+    color: white;
+    box-sizing:border-box;
+}
+
+.container1 {
+    background-color:#262626;
+    margin-top: 22px;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 85vh;
+    border:  2px  solid yellow ;
+    border-radius: 8px;
+    display: flex;
+    flex-direction:column;
+}
+
+#skills {
+
+    margin-top: 25px;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    font-size: 15px;
+    justify-content: center;
+    align-items: stretch;
+    gap:75px; 
+}
+
+#skills div  {
+   flex-basis: 165px;
+   flex-grow: 0;
+   flex-shrink: 0;
+}
+
+#skills ul li:first-child {
+    padding-top: 8px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    list-style-type: none;
+    font-size: 13px; 
+    margin-left: -10px;
+}
+
+#skills div:hover {
+    background-color:#990000;
+    border-radius: 8px;
+}
+
+#skills ul li {
+    font-size: 12px; 
+    list-style-type: none;
+}
+
+#clock {
+    text-align: right;   
+    margin-left: auto;
+    margin-right: auto; 
+    padding-top: 15px;
+    width: 88%;
+}
+
+/* ############################################################################################ */
+/* STRONA CHESS ------------------------------------------------------------------------*/
+body#chess {
+    background-color:#FEFEFE;
+    /* color: white; */
+    box-sizing:border-box;
+}
+
+body#chess .container1 {
+    all:unset;
+    background-color:white;
+    margin-top: 22px;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    border:  2px  solid red ;
+    border-radius: 8px;
+    display: flex;
+    flex-direction:column;
+}
+
+body#chess #nav:hover {
+    border-bottom: 1px red solid;    
+}
+
+body#chess .articles {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+ body#chess .articles div {
+    padding: 15px;
+    background-color: #F9FBFB ;
+    width: 45%;
+    font-size: 13px;
+    border-radius: 8px;
+    text-indent: 10px;
+}
+
+body#chess .articles div img { 
+    float: left;
+    padding-right: 10px;
+}
+
+body#chess .articles div a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+body#chess .articles div a:hover {
+  background-color:tomato;
+  color: black;
+  padding: 5px;
+}
+
+
+/* ############################################################################################ */
