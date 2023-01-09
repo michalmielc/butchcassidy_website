@@ -4,7 +4,7 @@ window.onload = function(){
 
         let time = new Date();
         let day = time.getDate();
-        let month = time.getMonth();
+        let month = time.getMonth() + 1; // zwraca wart styczen = 0, luty = 1 itd
         let year = time.getFullYear();
         let hours = time.getHours();
         let minutes = time.getMinutes();
@@ -21,6 +21,14 @@ window.onload = function(){
 
         if(seconds<10) {
             seconds = "0" + seconds;
+        }
+
+        if(day<10) {
+            day = "0" + day;
+        }
+
+        if(month<10) {
+            month = "0" + month;
         }
 
        let digClock  =  document.querySelector("#clock"); 

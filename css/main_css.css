@@ -150,7 +150,9 @@ body#chess .articles {
 
 body#chess .articles div img { 
     float: left;
-    padding-right: 10px;
+    margin-right: 10px; 
+    border: 1px solid #00004d;
+    object-fit:fill;
 }
 
 body#chess .articles div a {
@@ -163,6 +165,83 @@ body#chess .articles div a:hover {
   color: black;
   padding: 5px;
 }
+
+body#chess .articles div:hover {
+    background-color:#ffffe6;
+    font-weight: bold;
+    /* padding: 1px; */
+  }
+
+/* ############################################################################################ */
+
+/* STRONA PROJECTS ------------------------------------------------------------------------*/
+body#projects {
+    background-color:#FEFEFE;
+    /* color: white; */
+    box-sizing:border-box;
+}
+
+body#projects .container1 {
+    all:unset;
+    background-color:white;
+    margin-top: 22px;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    border:  2px  solid red ;
+    border-radius: 8px;
+    display: flex;
+    flex-direction:column;
+}
+
+body#projects #nav:hover {
+    border-bottom: 1px red solid;    
+}
+
+body#projects .articles {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+body#projects .articles div {
+    padding: 15px;
+    background-color: #F9FBFB ;
+    width: 45%;
+    font-size: 13px;
+    border-radius: 8px;
+    text-indent: 10px;
+}
+
+body#projects .articles div img { 
+    float: left;
+    margin-right: 10px; 
+    border: 1px solid #00004d;
+    object-fit:fill;
+}
+
+body#projects .articles div a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+body#projects .articles div a:hover {
+  background-color:tomato;
+  color: black;
+  padding: 5px;
+}
+
+body#projects .articles div:hover {
+    background-color:#ffffe6;
+    font-weight: bold;
+    /* padding: 1px; */
+  }
 
 
 /* ############################################################################################ */

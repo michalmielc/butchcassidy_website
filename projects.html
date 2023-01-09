@@ -4,45 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <title>CHESS</title>
+    <link rel="stylesheet" href="css\main_css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <title>PROJEKTY</title>
 
 </head>
-<body>
+<body id="projects">
 
-    <!-- nawigacja -->
-    <nav id="nav">
-    </nav>
+   <!-- zegar -->
+   <div id="clock"></div>
+
+   <div class="container1">
+       <!-- nawigacja -->
+       <nav id="nav">
+       </nav>
+
+         <!-- artykuły     -->
+         <div class="articles">
+
+            <div>
+                <img src="images/zdk.jpg" alt="" width="275" height="135">
+                A small software based on WinForm C# enables:
+                creating PDF summary of setting an advace
+                a multi-chossing of currency
+                all data are stored in XML
+             </div>
+    
+             <div>
+                <img src="images/rrl.jpg" alt="" width="275" height="135">
+                A warehouse software projected in two technologies: WinForm C#/MS SQL Serwer and PHP/MySQL
+                <br>
+                It enables:
+                stock movements of items like: withdraw and receipt
+                users grading depends on rights
+                reports
+        
+            </div>
+        
+            <div>
+                <img src="images/fachurnik.jpg" alt="" width="275" height="135">
+                Small software for proccessing of I/O SAP's files. 
+                Technology: WinForm C# To speed up business processes 
+                I came up with new tool, which replaces completely using of Excel. 
+                Using few mouse-click I got awaited converted text price-file. No more grapple with Excel.
+            </div>
+        
+        </div>
+    </div>
 
     
-    <p>DIGITAL CLOCK</p>
-    <a href="projects/clock/clock.html">DIGITAL CLOCK</a>
-
-    <p>
-        A small software based on WinForm C# enables:
-        creating PDF summary of setting an advace
-        a multi-chossing of currency
-        all data are stored in XML
-    </p>
     
-    <p>
-        A warehouse software projected in two technologies: WinForm C#/MS SQL Serwer an PHP/MySQL
-
-        It enables:
-        stock movements of items like: withdraw and receipt
-        users grading depends on rights
-        reports
-
-    </p>
-
-    <p>
-        Small software for proccessing of I/O SAP's files. 
-        Technology: WinForm C# To speed up business processes 
-        I came up with new tool, which replaces completely using of Excel. 
-        Using few mouse-click I got awaited converted text price-file. No more grapple with Excel.
-    </p>
-
-
+    <script src="projects/clock/clock.js"></script> 
     <script src="javascripts/navi.js"></script> 
 </body>
 </html>
