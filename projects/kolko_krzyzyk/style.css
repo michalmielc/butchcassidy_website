@@ -1,0 +1,111 @@
+ body {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.background {
+    background-color: #1f181f;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.title {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 4%;
+}
+
+.message {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.ttt_board {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows:  33% 33% 33%;
+    max-width: 330px;
+    background-color: #354F60;
+}
+
+.tile {
+    border: 1px solid white;
+    min-width: 110px;
+    min-height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;   
+    cursor: pointer; 
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.btn {
+    background-color: blueviolet;
+    color:white;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    margin-left: 1em;
+    cursor:pointer;
+} 
+
+
+fieldset {
+    min-width: 270px;
+    font-size: 23px;
+    border-radius: 5px;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    padding: 3px;
+}
+
+.css{
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.opt_hover:hover {
+    background-color: slategray;
+    border-radius: 5px;
+    border: 1px solid red;
+}
+
+.hide {
+    display: none;
+}
+
+
+/*
+.playerX {
+    color: red;
+}
+
+.playerO {
+    color: green;
+}
+
+*/
+
