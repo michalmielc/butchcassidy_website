@@ -131,6 +131,7 @@ body#chess .articles {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 30px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
@@ -144,7 +145,7 @@ body#chess .articles {
     background-color: #F9FBFB ;
     width: 45%;
     font-size: 13px;
-    border-radius: 8px;
+    border-radius: 10px;
     text-indent: 10px;
 }
 
@@ -176,7 +177,7 @@ body#chess .articles div:hover {
 
 /* STRONA PROJECTS ------------------------------------------------------------------------*/
 body#projects {
-    background-color:#FEFEFE;
+    background-color:#dcdcdc;
     /* color: white; */
     box-sizing:border-box;
 }
@@ -189,7 +190,7 @@ body#projects .container1 {
     margin-left: auto;
     margin-right: auto;
     border:  2px  solid red ;
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     flex-direction:column;
 }
@@ -202,6 +203,7 @@ body#projects .articles {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 30px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
@@ -243,5 +245,68 @@ body#projects .articles div:hover {
     /* padding: 1px; */
   }
 
-
 /* ############################################################################################ */
+
+/* STRONA ALGORITHMS ------------------------------------------------------------------------*/
+body#algorithms {
+    background-color:aliceblue;
+    /* color: alice blue; */
+    box-sizing:border-box;
+}
+
+body#algorithms .container1 {
+    all:unset;
+    background-color:white;
+    margin-top: 22px;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    border:  2px  solid red ;
+    border-radius: 8px;
+    display: flex;
+    flex-direction:column;
+}
+
+#div_algorithms_menu {
+    padding: 100px;
+    max-width: 300px;
+ 
+}
+
+#div_algorithms_menu ul{
+    margin: 0;
+    padding: 10px;
+	cursor: default;
+	list-style-type: none;
+    background-color:aliceblue;
+    border-radius: 10px;
+    border: 1px solid red;
+}
+
+#div_algorithms_menu ul ul{
+    border: none;
+}
+
+#div_algorithms_menu a{
+	text-decoration: none;
+}
+
+#div_algorithms_menu li {
+    padding: 5px;
+}
+
+/* DO POPRAWY */
+.collapse:active {
+    background-color: yellow;
+}
+
+/* STOPKA  */
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }

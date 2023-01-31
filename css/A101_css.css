@@ -1,0 +1,18 @@
+h3, h4{ 
+    text-align: center;
+}
+
+h4 {
+    background-color: brown;
+}
+.articles {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    gap: 20px 40px;
+}
+
+.articles div >div{
+    white-space: pre;
+}

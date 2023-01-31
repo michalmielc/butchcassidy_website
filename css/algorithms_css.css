@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+body {
+    background-color:#404040;
+    color: white;
+    box-sizing:border-box;
+}
+
+.container1 {
+    background-color:#262626;
+    margin-top: 22px;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    /* height: 85vh; */
+    border:  2px  solid yellow ;
+    border-radius: 8px;
+    /* display: flex;
+    flex-direction:column; */
+}
+
+
+/* STOPKA  */
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
