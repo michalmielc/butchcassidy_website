@@ -1,3 +1,7 @@
+.container1 {
+    height: 95vh;
+}
+
 h3, h4{ 
     text-align: center;
 }
@@ -5,14 +9,41 @@ h3, h4{
 h4 {
     background-color: brown;
 }
+
 .articles {
+
     display: flex;
     flex-direction: row;
-    align-content: center;
     justify-content: space-evenly;
-    gap: 20px 40px;
+    gap: 30px 40px;
 }
 
-.articles div >div{
+.articles div:nth-child(2) div, .articles div:nth-child(1) div {
     white-space: pre;
+    padding: 10px;
 }
+
+.articles div:nth-child(3)  {
+
+    background-color: #262636;
+    padding-left: 15px; 
+    padding-right: 15px; 
+    border-radius: 10px;
+    white-space:normal;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+.css {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#number {
+    font-size: 20px;
+    text-align: center;
+}
+#result {
+    font-size: 20px;
+}
+
+

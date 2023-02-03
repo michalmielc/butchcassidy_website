@@ -27,20 +27,21 @@
         </div>
         <div>
             <h4>PRZYKŁAD</h4>
-            <div>
-                <input type="radio" id="binToDec" name="convert" checked>Convert bin to decimal
-            </div>
-            <div>
-                <input type="radio" id="decToBin" name="convert">Convert decimal to bin
-            </div>
-            <div>
-                <input id="number" type="text" placeholder="wpisz wartość" onclick="clearFields()">
-            </div>
-            <div>
-                <button id="myButton" onclick="convert()">ZAMIEŃ</button>
-            </div>
+        
+            <input type="radio" id="binToDec" name="convert" checked>
+            <label for="binToDec">Convert bin to decimal</label>
+            <div class="css"></div>
+            <input type="radio" id="decToBin" name="convert">
+            <label for="decToBin"> Convert decimal to bin</label> 
+            <div class="css"></div>
+            <input id="number" type="text" placeholder="0" value="0">
+            <div class="css"></div>
+            <button id="myButton" onclick="convert()">ZAMIEŃ</button>
+            <input type="reset" id="reset" onclick="clearFields()" value="RESET">
+            <div class="css"></div>
             <p>Wynik:</p>
             <p id="result"></p>
+       
         </div>
     </div>
   

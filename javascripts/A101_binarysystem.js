@@ -1,69 +1,40 @@
- 
- var  input = document.getElementById('number')
+let  inputValue = document.getElementById('number').value;
+let input =  document.getElementById('number');
 
- 
- // EVENT PRESS ENTER
- input.addEventListener('keyup', function(event) {
+ input.addEventListener('beforeinput', e=>{
 
-    if (event.keyCode!=13)
-    {
-        if (document.getElementById('binToDec').checked)
-        {
-            if ( event.key !='1' &&  event.key !='0' )
-            {
-                var result = document.getElementById('result')
-                result.innerHTML =  "WYBIERZ 0 LUB 1"
-                result.style.color = "red"
-                rem()
-                //return
-            } 
+    inputValue = document.getElementById('number').value;
 
-            else
-
-            {
-                convert (input.value)
-            }
-            
+        if (!containsOnlyNumbers(e.data)){
+            console.log("beforeinput BŁĄD!");
+           e.preventDefault();
         }
+    })
 
-        else if (document.getElementById('decToBin').checked)
-        {
-            if ( event.keyCode <48 || event.keyCode >57 )
-            {
-                var result = document.getElementById('result')
-                result.innerHTML =  "CYFRY 0... 9"
-                result.style.color = "red"
-                rem()
-               // return
-            } 
+input.addEventListener('input', e=>{
 
-            else
-
-            {
-                convert (input.value)
-            }
-        }
+    if (!containsOnlyNumbers(e.data)){
+        console.log("input BŁĄD!");
+        e.preventDefault();
     }
+})
+    
 
-    else {
-            convert (input.value)
-    }
- })
- 
- //REMOVE CHAR 
+ //FUNCKJA SPRAWDZAJĄCA
+ function containsOnlyNumbers(str) {
 
- function rem()
- {
-      console.log(document.getElementById('number').value)
-      var x = document.getElementById('number').value
-      document.getElementById('number').value = x.substring(0,x.length-1)
- }
+    if (document.getElementById('binToDec').checked){
+        return /^[0-1]+$/.test(str);}
+
+    else if (document.getElementById('decToBin').checked){
+    return /^\d+$/.test(str);}
+  }
  
  // CONVERT FUNCTION
  function convert()
  {
-     var  inputValue = document.getElementById('number').value
- 
+     inputValue = document.getElementById('number').value;
+
      if (document.getElementById('binToDec').checked)
      {
         binaryToDecimal(inputValue)
@@ -90,7 +61,6 @@
      {
          binVariable = quotient%2 + binVariable
          quotient = Math.floor(quotient/2)
-         // console.log(binVariable + " " + quotient)
      } 
  
      document.getElementById('result').innerHTML =  inputValue +  "=  (" + binVariable +  ")" + "2".sub()
@@ -150,11 +120,11 @@ function binPower (pwr)
 // CLEAR INPUT AND RESULT
 function clearFields()
  {
-     document.getElementById('number').value=''
-     document.getElementById('result').innerHTML=''
- 
+     document.getElementById('number').value='0';
+     document.getElementById('result').innerHTML='';
  }
 
+//  PSEUDOKOD //
  const codeHex = document.querySelector("#codeDecToBin");
  codeHex.innerText = `ConvertToBin (n) {
     k = n  
