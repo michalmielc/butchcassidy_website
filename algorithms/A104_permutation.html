@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\css\algorithms_css.css">
+    <link rel="stylesheet" href="..\css\A104_css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">     
+
+    <title>Permutacje</title>
+</head>
+<body>
+       
+ <div class="container1">
+    <h3>Algorytm generujący permutacje ustalonego zbioru { 1,2, ... n } 
+        w porządku antyleksykorgaficznym.</h3>
+    <div class="articles">
+        <div>
+            <h4>PSEUDOKOD</h4>
+            <div id="pseudocode"></div>
+        </div>        
+        
+        <div>
+            <h4>PRZYKŁAD</h4>
+            <input id="number" type="text" placeholder="0" value="0">
+            <div class="css"></div>
+            <button id="myButton" onclick="main_perm()">GENERUJ</button>
+            <input type="reset" id="reset" onclick="clearFields()" value="RESET">
+            <div class="css"></div>
+            <div>Wynik:</div>
+            <div id="result"></div>
+       
+        </div>
+    </div>
+    <script src="../javascripts/A104_permutation.js"></script>
+</body>
+</html>
