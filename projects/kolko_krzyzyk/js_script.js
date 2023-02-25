@@ -6,11 +6,15 @@ let message =document.querySelector(".message");
 let resetButton = document.querySelector("#reset");
 const tiles = Array.from(document.querySelectorAll(".tile"));
 let fields = document.getElementById("fields").children;
-let minMax = document.querySelector('input[name="opt_ia"]:checked');
+let minMax = true;
 let board =['','','','','','','','',''];
+let boardMinMax = ['','','','','','','','',''];
 let isGameActice = false;
 let userPlayer ="-";
 let pcPlayer = "-";
+let step = 1;
+const maxValue = 1000;
+const minValue = -1000;
 
 
 //// MANIPULOWANIE SEKCJAMI 
@@ -19,17 +23,27 @@ settingsButton.addEventListener("click", function() {
     hiddenSections.forEach(el=>{ el.classList.remove("hide");});
     optionSection.classList.add("hide");
     let playerX = document.getElementById("radio_player1").checked;
+    let setAi  = document.getElementById("chk_ia").checked;
+
+ 
+
+    if (!setAi) {
+        minMax=false;
+    }
+
     
     if (playerX){
         userPlayer="X";
         pcPlayer="O";
     }
-    else{
+    else if (!playerX){
         userPlayer="O";
         pcPlayer="X";
         movePc(minMax);
     } 
+
     isGameActice=true;
+
 });
 
 //// RESET GRY
@@ -52,20 +66,174 @@ function resetBoard() {
     pcPlayer = "-";
 }
 
+
+function ifFirstMove(){
+    let firstMove = true;
+    for ( let i =0; i<=8;i++) {
+        if (board[i]!==""){
+             firstMove = false;   
+             break;
+        }
+    }
+
+    return firstMove;
+}
+
 // //RUCH KOMPUTERA
 function movePc(minMax){
+
+    let move=-1;
     
     if(minMax){
-    // DOŁOŻYĆ TUTAJ MIN MAX
+
+        if (ifFirstMove()){
+            move = 4;
+        }       
+
+        else {
+                boardMinMax= Array.from(board);
+                move = startMinMax(true,boardMinMax,step);
+        }
     }
     else {
-        let move= randomPcMOve();
-   
+        move= randomPcMOve();
+    }
+
         updateBoard(move,pcPlayer);
         fields[move].innerText=pcPlayer;
         checkResult();
-    }
+    
 }
+
+////////////////////////////////////////////////////////////
+///    ************** MIN MAX ******************************
+
+function startMinMax(isAiMove,boardMinMax,step)
+{
+    // MA NAM ZWRÓCIĆ NAJLEPSZY RUCH Z AKTUALNIE MOŻLIWYCH TZN INDEKS
+
+	let field = -1;
+    let tabFreeFieldsMinMax = [];
+    let moveValue = 0;
+	let bestValue = 0;
+
+    for ( let i =0; i<=8;i++) {
+        if (boardMinMax[i]===""){
+            tabFreeFieldsMinMax.push(i);
+        }
+    }
+
+    for (let i=0; i<tabFreeFieldsMinMax.length;i++) 
+    {
+   
+        boardMinMax[tabFreeFieldsMinMax[i]]=pcPlayer;
+
+        console.log(boardMinMax);
+
+        moveValue = MinMax (isAiMove,boardMinMax,step);
+     
+        console.log("węzeł nr: " + i + "pole: " + tabFreeFieldsMinMax[i]  +" wartość węzła: " + moveValue);
+
+        if (moveValue >= bestValue) {
+            bestValue = moveValue;
+            field = tabFreeFieldsMinMax[i];
+        } 
+
+        boardMinMax[tabFreeFieldsMinMax[i]]="";   
+    }
+	
+    console.log("AI WYBRAŁ POLE: " + field);
+    console.log("############################################################## ");
+
+	return field;
+}	
+
+function MinMax(isAiMove,boardMinMax,step)
+{
+
+	let bestValue = 0;
+
+
+    if (isAiMove) {
+  
+        if (winningVariantsMinMax(boardMinMax)) {
+                bestValue = maxValue;
+        } 
+
+        else {
+            step++;
+            bestValue = valueMinMax(false,boardMinMax,step);
+        }
+        
+    }
+
+    if (!isAiMove) {
+
+        if (winningVariantsMinMax(boardMinMax)) {
+            bestValue = minValue;
+        } 
+
+        else {
+            step++;
+            bestValue = valueMinMax(true,boardMinMax,step);
+        }
+
+    }
+ 
+    return bestValue;
+
+}
+
+function valueMinMax(isAiMove,boardMinMax,step)
+{
+    // MA NAM ZWRÓCIĆ WARTOŚĆ RUCHU
+
+    let tabFreeFieldsMinMax = [];
+    let moveValue = 0;
+	let bestValue = 0;
+
+    for ( let i =0; i<=8;i++) {
+        if (boardMinMax[i]===""){
+            tabFreeFieldsMinMax.push(i);
+        }
+    }
+    
+
+    
+    if (isAiMove) {
+        for (let i=0; i<tabFreeFieldsMinMax.length;i++) 
+        {
+     
+            boardMinMax[tabFreeFieldsMinMax[i]]=pcPlayer;
+            moveValue = MinMax (true,boardMinMax,step);
+            if (moveValue >= bestValue) {
+                bestValue = moveValue;
+            } 
+            boardMinMax[tabFreeFieldsMinMax[i]]="";   
+        }
+    }
+
+    if (!isAiMove) {
+        for (let i=0; i<tabFreeFieldsMinMax.length;i++) 
+        {
+            boardMinMax[tabFreeFieldsMinMax[i]]=userPlayer;
+            moveValue = MinMax (false,boardMinMax,step);
+
+            if (moveValue <= bestValue) {
+                bestValue = moveValue;
+            } 
+
+    
+            boardMinMax[tabFreeFieldsMinMax[i]]="";   
+        }
+    }
+
+
+	return bestValue;
+}	
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 
 
 // // PODPIĘCIE ZDARZENIA DO KAFELKÓW
@@ -111,6 +279,7 @@ function checkResult(){
     }
 }
 
+// SPRAWDZENIE WARIANTÓW
 function winningVariants() {
     let winning = false;
     const winningConditions  = [
@@ -132,12 +301,10 @@ function winningVariants() {
         if (( field1===field2) && (field2 === field3) && (field1!=="")) {
             if (field1==="X") {
                 message.innerText = "WINNING BY X";
-                console.log("WINNING BY X");
                 winning =  true;
                }
             else {
                 message.innerText = "WINNING BY O";
-                console.log("WINNING BY O");
                 winning =  true;
             }   
         }
@@ -146,6 +313,40 @@ function winningVariants() {
  
     return winning;
 }
+
+// SPRAWDZENIE WARIANTÓW ZWYCIESTWA REMISU PORAŻKI
+function winningVariantsMinMax(boardMinMax) {
+    let winning = false;
+    const winningConditions  = [
+                [0,1,2],
+                [3,4,5],
+                [6,7,8],
+                [0,3,6],
+                [1,4,7],
+                [2,5,8],
+                [0,4,8],
+                [2,4,6]];
+
+    for ( let i=0; i<8;i++) {
+        const win = winningConditions[i];
+        const field1 = boardMinMax[win[0]];
+        const field2 = boardMinMax[win[1]];
+        const field3 = boardMinMax[win[2]];
+
+        if (( field1===field2) && (field2 === field3) && (field1!=="")) {
+            if (field1==="X") {
+                winning =  true;
+               }
+            else {
+                winning =  true;
+            }   
+        }
+    }
+
+ 
+    return winning;
+}
+
 
 ////LOSOWY RUCH KOMPA
 function randomPcMOve() {
@@ -159,7 +360,6 @@ function randomPcMOve() {
         }
     }
     indx = randomNumber(0,tabFreeFields.length-1);
-    console.log(`${tabFreeFields[indx]} ${indx} ${tabFreeFields}` );
     return freeTile = tabFreeFields[indx] ;
 }
 
@@ -180,149 +380,7 @@ function randomNumber(min, max) {
 ////UPDATE TABLICY
 const updateBoard = (index,player) => {
     board[index] = player;
-    console.log(board);
+
 }
 
 
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
-// window.addEventListener("DOMContentLoaded",
-// () => {
-
-//     const settingsButton = document.querySelector("#opt_submit");
-//     const hiddenSections =  document.querySelectorAll(".hide"); 
-
-
-//     settingsButton.addEventListener("click",  function () {
-//         hiddenSections.forEach(el=>{ el.classList.remove("hide");});
-//        return;
-//    });
-
-// });
-//     const tiles = Array.from(document.querySelectorAll(".tile"));
-//     const playerDisplay =document.querySelector(".display-player");
-//     const resetButton = document.querySelector("#reset");
-//     const annoucer =document.querySelector(".annoucer");
-
-//     let board =['','','','','','','','',''];
-//     let currentPlayer ="X";
-//     let isGameActice = true;
-
-//     const PLAYERX_WON = "PLAYERX_WON";
-//     const PLAYERO_WON = "PLAYERO_WON";
-//     const TIE = "TIE";
-
-//     const winningConditions  = [
-//         [0,1,2],
-//         [3,4,5],
-//         [6,7,8],
-//         [0,3,6],
-//         [1,4,7],
-//         [2,5,8],
-//         [0,4,8],
-//         [2,4,6],
-//     ];
-
-//     function handleResultvalidation () {
-//         let roundWon = false;
-//         for ( let i =0; i<=7;i++) {
-//             const winCondition = winningConditions[i];
-//             const a = board[winCondition[0]];
-//             const b = board[winCondition[1]];
-//             const c = board[winCondition[2]];
-
-//             if (a === "" || b === "" || c === ""){
-//                 continue;
-//             }
-
-//             if (a === b && b === c){
-//                 roundWon=true;
-//                 break;
-//             }
-//         }
-
-//         if (roundWon)
-//         {
-//             announce(currentPlayer==="X"?PLAYERX_WON:PLAYERO_WON);
-//             isGameActice = false;
-//             return;
-//         }
-
-//         if (!board.includes('')) 
-//         announce(TIE);
-//     }
-
-
-
-//     const announce = (type)=> {
-
-//     switch(type) {
-//         case  PLAYERX_WON:
-//             annoucer.innerHTML = 'Player <span class="playerX">X</span>won';
-//             break;
-//         case  PLAYERO_WON:
-//             annoucer.innerHTML = 'Player <span class="playerO">O</span>won';
-//             break;
-//         case TIE: 
-//             annoucer.innerHTML = 'TIE';
-//             break;
-//     }
-//     annoucer.classList.remove("hide");
-//     }
-//     const isValidAction = (tile) => {
-//         if(tile.innerText==="X" || tile.innerText==="O")
-//         {
-//             return false;
-//         }
-
-//         return true;
-//     }
-//     const updateBoard = (index) => {
-//         board[index] = currentPlayer;
-//     }
-//     const changePlayer = ()=> {
-//         playerDisplay.classList.remove(`player${currentPlayer}`);
-//         currentPlayer = currentPlayer ==="X"?"O":"X";
-//         playerDisplay.innerText = currentPlayer;
-//         playerDisplay.classList.add(`player${currentPlayer}`);
-//     }
-//     const  userAction =(tile,index ) => {
-//         if (isValidAction(tile) && isGameActice) {
-//             tile.innerText = currentPlayer;
-//             tile.classList.add(`player${currentPlayer}`)
-//             updateBoard(index);
-//             handleResultvalidation();
-//             changePlayer();
-//         }
-
-//     };
-//     const resetBoard =()=> {
-//         board =['','','','','','','','',''];
-//         isGameActice=true;
-//         annoucer.classList.add("hide");
-
-//         if (currentPlayer==="O")
-//         {
-//             changePlayer();
-//         }
-
-//         tiles.forEach(tile=>{
-//             tile.innerText="";
-//             tile.classList.remove("playerX");
-//             tile.classList.remove("playerO");
-//         });
-//     }
-
-//     tiles.forEach ( (tile,index)=> {
-//         tile.addEventListener("click",()=>userAction(tile,index)); 
-//     });
-//     resetButton.addEventListener("click", resetBoard);
