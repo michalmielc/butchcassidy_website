@@ -12,7 +12,6 @@ let boardMinMax = ['','','','','','','','',''];
 let isGameActice = false;
 let userPlayer ="-";
 let pcPlayer = "-";
-let step = 1;
 const maxValue = 1000;
 const minValue = -1000;
 
@@ -66,18 +65,18 @@ function resetBoard() {
     pcPlayer = "-";
 }
 
+// PROTOTYP PIERWSZEGO RUCHU
+// function ifFirstMove(){
+//     let firstMove = true;
+//     for ( let i =0; i<=8;i++) {
+//         if (board[i]!==""){
+//              firstMove = false;   
+//              break;
+//         }
+//     }
 
-function ifFirstMove(){
-    let firstMove = true;
-    for ( let i =0; i<=8;i++) {
-        if (board[i]!==""){
-             firstMove = false;   
-             break;
-        }
-    }
-
-    return firstMove;
-}
+//     return firstMove;
+// }
 
 // //RUCH KOMPUTERA
 function movePc(minMax){
@@ -86,15 +85,11 @@ function movePc(minMax){
     
     if(minMax){
 
-        if (ifFirstMove()){
-            move = 4;
-        }       
-
-        else {
                 boardMinMax= Array.from(board);
-                move = startMinMax(true,boardMinMax,step);
+                move = startMinMax(boardMinMax);
         }
-    }
+    
+
     else {
         move= randomPcMOve();
     }
@@ -108,20 +103,23 @@ function movePc(minMax){
 ////////////////////////////////////////////////////////////
 ///    ************** MIN MAX ******************************
 
-function startMinMax(isAiMove,boardMinMax,step)
+function startMinMax(boardMinMax)
 {
     // MA NAM ZWRÓCIĆ NAJLEPSZY RUCH Z AKTUALNIE MOŻLIWYCH TZN INDEKS
 
 	let field = -1;
     let tabFreeFieldsMinMax = [];
     let moveValue = 0;
-	let bestValue = 0;
+	let bestValue = minValue;
+    let step = 1;
 
     for ( let i =0; i<=8;i++) {
         if (boardMinMax[i]===""){
             tabFreeFieldsMinMax.push(i);
         }
     }
+
+    field = tabFreeFieldsMinMax[0];
 
     for (let i=0; i<tabFreeFieldsMinMax.length;i++) 
     {
@@ -130,7 +128,7 @@ function startMinMax(isAiMove,boardMinMax,step)
 
         console.log(boardMinMax);
 
-        moveValue = MinMax (isAiMove,boardMinMax,step);
+        moveValue = MinMax (true,boardMinMax,step);
      
         console.log("węzeł nr: " + i + "pole: " + tabFreeFieldsMinMax[i]  +" wartość węzła: " + moveValue);
 
@@ -151,31 +149,36 @@ function startMinMax(isAiMove,boardMinMax,step)
 function MinMax(isAiMove,boardMinMax,step)
 {
 
+   
 	let bestValue = 0;
-
 
     if (isAiMove) {
   
+        bestValue = minValue;
+
         if (winningVariantsMinMax(boardMinMax)) {
                 bestValue = maxValue;
         } 
 
         else {
-            step++;
-            bestValue = valueMinMax(false,boardMinMax,step);
+          
+            bestValue = valueMinMax(false,boardMinMax,step+1);
         }
         
     }
 
+   
     if (!isAiMove) {
 
+        bestValue = maxValue; 
+   
         if (winningVariantsMinMax(boardMinMax)) {
             bestValue = minValue;
         } 
 
         else {
-            step++;
-            bestValue = valueMinMax(true,boardMinMax,step);
+       
+            bestValue = valueMinMax(true,boardMinMax,step+1);
         }
 
     }
@@ -198,37 +201,53 @@ function valueMinMax(isAiMove,boardMinMax,step)
         }
     }
     
-
-    
-    if (isAiMove) {
-        for (let i=0; i<tabFreeFieldsMinMax.length;i++) 
-        {
-     
-            boardMinMax[tabFreeFieldsMinMax[i]]=pcPlayer;
-            moveValue = MinMax (true,boardMinMax,step);
-            if (moveValue >= bestValue) {
-                bestValue = moveValue;
-            } 
-            boardMinMax[tabFreeFieldsMinMax[i]]="";   
-        }
+    if (tabFreeFieldsMinMax.length==0)
+    {
+        bestValue = 0;
     }
-
-    if (!isAiMove) {
-        for (let i=0; i<tabFreeFieldsMinMax.length;i++) 
-        {
-            boardMinMax[tabFreeFieldsMinMax[i]]=userPlayer;
-            moveValue = MinMax (false,boardMinMax,step);
-
-            if (moveValue <= bestValue) {
-                bestValue = moveValue;
-            } 
-
     
-            boardMinMax[tabFreeFieldsMinMax[i]]="";   
+    else 
+    { 
+        if (isAiMove) {
+
+            bestValue = minValue;
+
+            for (let i=0; i<tabFreeFieldsMinMax.length;i++) 
+            {
+        
+                boardMinMax[tabFreeFieldsMinMax[i]]=pcPlayer;
+                moveValue = MinMax (true,boardMinMax,step+1);
+                if (moveValue >= bestValue) {
+                    bestValue = moveValue;
+                } 
+                boardMinMax[tabFreeFieldsMinMax[i]]="";   
+            }
+
+            bestValue=bestValue-step;
         }
-    }
 
 
+        if (!isAiMove) {
+
+                bestValue = maxValue;
+
+                for (let i=0; i<tabFreeFieldsMinMax.length;i++) 
+                {
+                    boardMinMax[tabFreeFieldsMinMax[i]]=userPlayer;
+                    moveValue = MinMax (false,boardMinMax,step+1);
+
+                    if (moveValue <= bestValue) {
+                        bestValue = moveValue;
+                    } 
+
+            
+                    boardMinMax[tabFreeFieldsMinMax[i]]="";   
+                }
+
+                bestValue=bestValue+step;
+            }
+
+}
 	return bestValue;
 }	
 
