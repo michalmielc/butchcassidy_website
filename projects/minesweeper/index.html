@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <title>MINESWEEPER</title>
+</head>
+<body>
+    
+    <main class="background">
+
+        <section class="title">
+            <h1>WELCOME TO MINESWEEPER</h1>
+        </section>
+
+        <section class="options">
+            
+                <fieldset> 
+                    <h3>CHOOSE DIFFICULTY LEVEL</h3>
+                    <h5>BOARD SIZE HxW</h5>
+                    <div class="opt_hover">
+                        <img src="reset.png" alt="" id="resetHeight">
+                        <input type="numbers" id="board_height" name="board_height" class="input_values" value="10" autocomplete="off">
+                        <label for="board_height" name="board_height">HEIGHT</label>
+                    </div>
+             
+                    <div class="css"></div>
+
+                    <div class="opt_hover">
+                        <img src="reset.png" alt="" id="resetWidth">
+                        <input type="numbers" id="board_width" name="board_width" class="input_values" value="10" autocomplete="off">
+                        <label for="board_width" name="board_width">WIDTH</label>
+                    </div>
+
+                    <div class="css"></div>
+                    
+                    <div class="opt_hover">
+                        <img src="reset.png" alt="" id="resetMines">
+                        <input type="numbers" id="mines_amount" name="mines_amount" class="input_values" value="10" autocomplete="off">
+                        <label for="mines_amount" name="mines_amount">MINES AMOUNT</label>
+                        <input type="numbers" id="mines_perc" name="mines_perc" class="input_values" value="10" autocomplete="off">
+                        <label for="mines_perc" name="mines_perc">%</label>
+                    </div>
+                    <div class="css"></div>
+                    
+                    <input type="submit" class="btn submit" value="submit" id="opt_submit">
+              </fieldset>
+          
+        </section>
+
+        <section class="message hide">
+            GAME STATUS
+            <div class="hide">
+                <span id="time">Time: </span>
+                <span id="efficiency">Efficiency: </span>
+                <span id="mines">Mines: </span>
+                <span id="clicked">Clicked: </span>
+            </div>
+        </section>
+
+        <section class="board hide">
+      
+          
+            <div class="board hide" id="fields">
+            <!-- <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div> -->
+            </div>
+
+    
+        </section>
+      
+        <section class="controls hide">
+            <button id="reset"  class="btn">RESET</button>
+        </section>
+
+    </main>
+    
+
+<script src="js_script.js"></script>
+</body>
+</html>

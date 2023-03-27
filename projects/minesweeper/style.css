@@ -1,0 +1,134 @@
+ body {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.background {
+    background-color: #3e5869;
+    height: 130vh;
+    padding-top: 20px;
+}
+
+.title {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 4%;
+}
+
+.message {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.board {
+    margin: 0 auto;
+    background-color:#ffffd6;
+    max-width: 900px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+}
+
+.tile {
+    border: 1px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 40px;
+    min-height: 40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+} 
+
+.tileBox {
+    font-size: 16px;
+    height:100%;
+    width:100%;
+    text-align: center;
+   
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.btn {
+    background-color: #961a33;
+    color:white;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    margin-left: 1em;
+    cursor:pointer;
+} 
+
+
+fieldset {
+    min-width: 270px;
+    font-size: 23px;
+    border-radius: 5px;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    padding: 3px;
+}
+
+.css{
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.hide {
+    display: none;
+}
+
+.input_values {
+    width: 50px;
+    font-size: 25px;
+    text-align: center;
+}
+
+img {
+    width: 17px;
+    height: 17px;
+    /* border: 1px solid red; */
+    padding-right: 10px;
+}
+
+img:hover {
+    background-color: slategray;
+    border-radius: 5px;
+    border: 1px solid red;
+}
+
+#mines_perc {
+    background-color: slategray;
+    pointer-events: none;
+}
+
+#fields{
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+#time {
+    min-width: 170px;
+}
