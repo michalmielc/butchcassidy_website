@@ -62,36 +62,33 @@ function  antylex(m) {
 
 //  PSEUDOKOD //
 const pseudocode = document.querySelector("#pseudocode");
-pseudocode.innerText = `REVERSE (m) {
-   i = 1
-   j = m  
-   while i<j {
-    P[i]=P[j]
-    i=j
-    j=j-1
-   }  
+pseudocode.innerText = `
+    REVERSE (m) {
+    i = 1
+    j = m  
+    while i < j {
+        P[i] = P[j]
+        i = j
+        j = j-1 }  
 
    ANTYLEX(m) { 
-    if m=1 then
+    if m = 1 then
         write (P[1],P[2],... P[n])
     else 
-        for i=1 to m {
+        for i = 1 to m {
             ANTYLEX(m-1)
-            if i<m then
-                P[i]=P[m]
+            if i < m then
+                P[i] = P[m]
                 REVERSE(m-1)
         }    
    }
 
    MAIN_PERMUTATION (){
-    for i= 1 to n {
-        P[i]=i
+    for i = 1 to n {
+        P[i] = i
     }
-
     ANTYLEX(n)
-   }
-
- `
+   } `
 
 
  // CLEAR INPUT AND RESULT

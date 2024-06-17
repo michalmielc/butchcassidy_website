@@ -6,39 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="..\css\algorithms_css.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="..\css\A103_css.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">     
     
-    <title>Podzbiory</title>
+    <title>Subsets</title>
 </head>
 <body>
     
-    <p>Algorytm generujący podzbiory ustalonego zbioru { 1,2, ... n }</p>
+    <div class="container1">
+        <h3>Creating of subsets of a fixed set { 1,2, ... n }.</h3>
+        <div class="articles">
+            <div>
+                <h4>CODE</h4>
+                <div id="pseudocode" class="pseudocode"></div>
+            </div>        
+            
+            <div>
 
-    <div>        
-    
-    <p>PSEUDOKOD</p>
+                <h4>EXAMPLE</h4>
+                <input id="number" name="number" type="number" placeholder="wpisz wartość" onclick="clearFields()">
+                <label for="number">Podaj  liczbę elementów</label>
+                <button id="myButton" onclick="createSubsets()">Generuj podzbiory</button>
+            
+                <p>RESULT:</p>
+                <p id="result"></p>
+           
+            </div>
+        </div>
+   
+        <script src="../javascripts/A103_subset.js"></script>
 
-    PROCEDURE subset(n)
-    PRINT A = { &#8709; }
-      a: = max { 1 <= i <= n, i &notin; A }
-        if a== &#8709; then 
-            RETURN
-
-        else
-            usuwamy z A wszystkie elementy większe od a i dodajemy A
-            PRINT A
-
-    <p>PRZYKŁAD</p>
-
-
-    <input id="number" name="number" type="number" placeholder="wpisz wartość" onclick="clearFields()">
-    <label for="number">Podaj  liczbę elementów</label>
-    <button id="myButton" onclick="createSubsets()">Generuj podzbiory</button>
-
-    <p>Wynik:</p>
-    <p id="result"></p>
-
-    <script src="../javascripts/A103_subset.js"></script>
 </body>
 </html>

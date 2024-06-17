@@ -14,19 +14,18 @@
 <body>
    
  <div class="container1">
-    <h3>Algorytm zwracający reprezentację liczby w systemie dwójkowym na dziesiętnym
-        i na odwrót.</h3>
+    <h3>converting a number representation from binary to decimal and the other way around.</h3>
     <div class="articles">
         <div>
-            <h4>PSEUDOKOD BINARNY NA DZIESIĘTNY</h4>
-            <div id="codeBinToDec"></div>
+            <h4>BINARNY TO DECIMAL</h4>
+            <div id="codeBinToDec" class="pseudocode"></div>
         </div>        
         <div>
-            <h4>PSEUDOKOD DZIESIĄTKOWY NA BINARNY</h4>
-            <div id="codeDecToBin"></div>
+            <h4>DECIMAL TO BINARNY</h4>
+            <div id="codeDecToBin" class="pseudocode"></div>
         </div>
         <div>
-            <h4>PRZYKŁAD</h4>
+            <h4>EXAMPLE</h4>
         
             <input type="radio" id="binToDec" name="convert" checked>
             <label for="binToDec">Convert bin to decimal</label>
@@ -36,10 +35,10 @@
             <div class="css"></div>
             <input id="number" type="text" placeholder="0" value="0">
             <div class="css"></div>
-            <button id="myButton" onclick="convert()">ZAMIEŃ</button>
+            <button id="myButton" onclick="convert()">CONVERT</button>
             <input type="reset" id="reset" onclick="clearFields()" value="RESET">
             <div class="css"></div>
-            <p>Wynik:</p>
+            <p>RESULT:</p>
             <p id="result"></p>
        
         </div>

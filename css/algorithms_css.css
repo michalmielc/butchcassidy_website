@@ -25,6 +25,10 @@ body {
     flex-direction:column; */
 }
 
+.pseudocode {
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    font-weight: 8px;
+}
 
 /* STOPKA  */
 #footer {

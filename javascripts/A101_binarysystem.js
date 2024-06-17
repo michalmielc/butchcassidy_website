@@ -130,9 +130,9 @@ function clearFields()
     k = n  
     r = 0  
     bin = ''  
-  
+
     while (k<1) { 
-        r= k mod n 
+        r = k mod n 
         bin = r & bin 
         k = k/2 }
 
@@ -141,10 +141,11 @@ function clearFields()
 const codeBin = document.querySelector("#codeBinToDec");
 codeBin.innerText = `ConvertToDec(bin){
     array []  = bin
-    decimal = '' 
+    decimal = 0 
     
-    for j=0 to array.length
-        decimal = decimal + array[i]* binPower[array.length -j-1]
+    for j = 0 to array.length
+        decimal = decimal + array[i] 
+                        * binPower[array.length -j-1]
         j = j+1
  
  RETURN decimal}
@@ -155,9 +156,9 @@ binPower(n) {
     else if n = 1
         RETURN 1
     else
-        for j=2 to n
+        for j = 2 to n
             result = result*2
-            j=j+1
+            j = j+1
     
     RETURN result}`  
  

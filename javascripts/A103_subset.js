@@ -142,3 +142,19 @@ function fillSetArray(dim, tbl)
      document.getElementById('result').innerHTML=''
  
  }
+
+
+ 
+const pseudocode = document.querySelector("#pseudocode");
+pseudocode.innerText = `
+    PROCEDURE subset(n)
+    PRINT A = { &#8709; }
+      a: = max { 1 <= i <= n, i &notin; A }
+        if a== &#8709; then 
+            RETURN
+
+        else
+            usuwamy z A wszystkie elementy większe od a i dodajemy A
+            PRINT A
+`  
+ 

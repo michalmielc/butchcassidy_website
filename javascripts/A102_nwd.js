@@ -67,3 +67,16 @@ function clearFields()
     document.getElementById('result').innerHTML=''
 
 }
+
+
+const pseudocode = document.querySelector("#gcd");
+pseudocode.innerText = `
+    PROCEDURE NWD(a,b)
+    
+        while (b!=0)
+            c := a mod b
+            a := b
+            b := c
+        RETURN a.   
+`  
+ 
